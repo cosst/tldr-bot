@@ -1,0 +1,14 @@
+{
+  "name": "tldr-bot",
+  "version": "1.0.0",
+  "main": "bot.js",
+  "author": "<nathaniel.schier@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "twit": "^2.2.9"
+  }
+}
