@@ -9,6 +9,7 @@
     "start": "node bot.js"
   },
   "dependencies": {
+    "node-cron": "^1.2.1",
     "twit": "^2.2.9"
   }
 }
