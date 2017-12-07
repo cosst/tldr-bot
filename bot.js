@@ -46,7 +46,7 @@ cron.schedule('* * * * *', function(){
             'TL;DR ' + '@' + screenName + ', though I think you\'re a wonderful person.',
             'TL;DR ' + '@' + screenName + ', but I do love you friend.',
             'TL;DR! I love you ' + '@' + screenName + ', but this is too much for Twitter.',
-            'I love ' + '@' + screenName + ', you love me, just please keep it to one-forty.',
+            'I love ' + '@' + screenName + ', you love me, but please keep it to just one-forty.',
             '@' + screenName + 'You\'re loved and respected, but TL;DR.',
             '@' + screenName + 'You\'re a treasure, but TL;DR.',
             '@' + screenName + 'Strong tweet my friend, but TL;DR.',
