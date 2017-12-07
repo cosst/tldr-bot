@@ -5,10 +5,10 @@ var Twitter = new twit(config);
 
 var cron = require('node-cron');
 
-cron.schedule('*/2 * * * *', function(){
+cron.schedule('* * * * *', function(){
   var params = {
     q: 'a OR b OR c OR d OR e OR f OR g OR h OR i OR j OR k OR l OR m OR n OR o OR p OR q OR r OR s OR t OR u OR v OR y OR x OR z -filter:retweets',
-    count: 1,
+    count: 100,
     result_type: 'recent',
     lang: 'en',
     tweet_mode: 'extended'
@@ -23,7 +23,10 @@ cron.schedule('*/2 * * * *', function(){
         console.log('Character Count: ' + data.statuses[i].full_text.length);
         let tweetLength = data.statuses[i].full_text.length;
         let replyCheck = data.statuses[i].in_reply_to_status_id_str;
-        if (tweetLength === 280 && replyCheck === null) {
+        let followerCount = data.statuses[i].user.followers_count;
+        let followingCount = data.statuses[i].user.friends_count;
+        let followRatio = followerCount / followingCount;
+        if (tweetLength === 280 && replyCheck === null && followRatio > 1.49 && followerCount > 200) {
           let id = { id: data.statuses[i].id_str};
           let screenName = data.statuses[i].user.screen_name;
           let tweetStrings = [
@@ -79,6 +82,13 @@ cron.schedule('*/2 * * * *', function(){
               console.log(text);
             }
           });
+        // console.log(i);
+        // console.log(data.statuses[i].user.screen_name);
+        // console.log('Character Count: ' + data.statuses[i].full_text.length);
+        // console.log('Follower Count: ' + followerCount);
+        // console.log('Following Count: ' + followingCount);
+        // console.log('Follow Ratio: ' + followRatio);          
+        // console.log(status.status);
         }
       }  
     } else {
