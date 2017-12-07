@@ -15,7 +15,6 @@ cron.schedule('* * * * *', function(){
   };
 
   Twitter.get('search/tweets', params, function(err, data, response) {
-    // console.log(data);
     if (!err) {
       for (let i = 0; i < data.statuses.length; i++) {
         console.log(i);
@@ -24,43 +23,50 @@ cron.schedule('* * * * *', function(){
         console.log('Character Count: ' + data.statuses[i].full_text.length);
         let tweetLength = data.statuses[i].full_text.length;
         let replyCheck = data.statuses[i].in_reply_to_status_id_str;
-        if (tweetLength = 280 && replyCheck === null) {
+        if (tweetLength === 280 && replyCheck === null) {
           let id = { id: data.statuses[i].id_str};
           let screenName = data.statuses[i].user.screen_name;
           let tweetStrings = [
-            'I appreciate the sentiment ' + '@' + screenName + ', but TL;DR.',
-            'I mean no disrespect ' + '@' + screenName + ', but maybe you should talk about this on Medium or something.',
-            'As a wise man once said ' + '@' + screenName + ', brevity is the soul of wit.',
-            'Excuse me ' + '@' + screenName + ', but you\'re being verbose.',
-            'Remember love is love is love is love ' + '@' + screenName + ', but this is a bit wordy.',
-            'We are all children of Gaia ' + '@' + screenName + ', nevertheless she would say get to the point faster.',
-            '@' + screenName + ' I kinda hate Reddit sometimes, but TL;DR.',
-            'You are my friend ' + '@' + screenName + ', yet this is a bit long-winded for Twitter.',
-            'Sorry ' + '@' + screenName + ', but TooLong;Didn\'tRead, lol.',
-            '@' + screenName + '! My man. You mouthy son of a gun.',
-            'I have no problem with this ' + '@' + screenName + ', but Hemingway would never approve.',
-            'I don\'t mean to be rude ' + '@' + screenName + ', but are you paid by the character?',
-            'I love you ' + '@' + screenName + ', even so I would prefer you be more succinct.',
-            'TL;DR ' + '@' + screenName + ', but I think you are a wonderful person.',
-            'TL;DR! I love you ' + '@' + screenName + ', but this is unnecessary for Twitter.',
-            'I love ' + '@' + screenName + ', you love me, but please keep it to one-forty.',
-            '@' + screenName + ' you are loved and respected, yet TL;DR.',
-            'As Twitter-Nietzsche once said ' + '@' + screenName + ', it is my ambition to say in 140 what others say in a whole 280.',
-            'As Horace Grant once said to Michael Jordan ' + '@' + screenName + ', quidquid praecipies, esto brevis.',
-            'You might think Pascal wordy ' + '@' + screenName + ', but I have only made this tweet longer because I have not had the time to make it shorter.',
-            'As the bard himself once said ' + '@' + screenName + ', when words are scarce they are seldom spent in vain.',
-            'My friend ' + '@' + screenName + ', Buddha says better than a thousand hollow words, is one word that brings peace.',
-            'As that old Greek dude Sophocles once said ' + '@' + screenName + ', to speak much is one thing; to speak to the point another!',
-            'You seem like a lovely person ' + '@' + screenName + ', but you write like a lawyer.',
-            'Do you have a blog ' + '@' + screenName + '? You should do a blog post on this.',
-            'I love you ' + '@' + screenName + ' but TL;DR!',
-            'Yo ' + '@' + screenName + ', I\'m really happy for you, Imma let you finish, but 140 characters is best.'               
-          ]
-          let randomTweet = Math.floor(Math.random()*tweetStrings.length);
+            'I appreciate your sentiment ' + '@' + screenName + ', but TL;DR.',
+            'I mean no disrespect ' + '@' + screenName + ', but maybe you should write about this on Medium or something.',
+            'I don\'t mean any disrespect ' + '@' + screenName + ', but you should write about this on Medium or something.',
+            'As a wise man said ' + '@' + screenName + ', brevity is the soul of wit.',
+            'Pardon me ' + '@' + screenName + ', but you\'re being verbose.',
+            'Excuse me ' + '@' + screenName + ', but this is Twitter - TL;DR.',
+            'Remember love is all you need ' + '@' + screenName + ', but this is a bit wordy.',
+            'We are all Gaia\'s children ' + '@' + screenName + ', nevertheless she would say get to the point faster.',
+            '@' + screenName + 'I kind of hate Reddit sometimes, but TL;DR.',
+            'You are my friend ' + '@' + screenName + ', but this is long-winded for Twitter.',
+            'Apologies ' + '@' + screenName + ', but TooLong;Didn\'tRead, lol.',
+            'Sorry to butt in ' + '@' + screenName + ', but TL;DR.',
+            '@' + screenName + 'My man! You talkative son of a gun.',
+            'I see what you\'re getting at ' + '@' + screenName + ', but Hemingway would never approve.',
+            'I don\'t want to be rude ' + '@' + screenName + ', but are you paid by the character?',
+            'I love you ' + '@' + screenName + ', even so I\'d prefer you be more succinct here.',
+            'TL;DR ' + '@' + screenName + ', though I think you\'re a wonderful person.',
+            'TL;DR ' + '@' + screenName + ', but I do love you friend.',
+            'TL;DR! I love you ' + '@' + screenName + ', but this is too much for Twitter.',
+            'I love ' + '@' + screenName + ', you love me, just please keep it to one-forty.',
+            '@' + screenName + 'You\'re loved and respected, but TL;DR.',
+            '@' + screenName + 'You\'re a treasure, but TL;DR.',
+            '@' + screenName + 'Strong tweet my friend, but TL;DR.',
+            'As Nietzsche once said ' + '@' + screenName + ', it is my ambition to say in 140 what others say in a whole 280.',
+            'As Horace Grant once told Michael Jordan ' + '@' + screenName + ', quidquid praecipies, esto brevis.',
+            'You may think Pascal wordy ' + '@' + screenName + ', but I have only made this tweet longer because I have not had the time to make it shorter.',
+            'As the bard himself said ' + '@' + screenName + ', when words are scarce they are seldom spent in vain.',
+            'My good friend ' + '@' + screenName + ', Buddha says better than a thousand hollow words, is one word that brings peace.',
+            'As that ancient Greek dude Sophocles once said ' + '@' + screenName + ', to speak much is one thing; to speak to the point another!',
+            'You seem like a lovely person ' + '@' + screenName + ', but you Tweet like you\'re trying to impress a lawyer.',
+            'Do you have a blog ' + '@' + screenName + '? You should write a blog post on this.',
+            'Love you ' + '@' + screenName + ' but TL;DR!',
+            'You\'re a good person ' + '@' + screenName + ' but TL;DR my friend.',
+            'Yo ' + '@' + screenName + ', I\'m really happy for you, Imma let you finish, but 140 characters is better.'               
+          ];
+          let randomTweet = Math.floor(Math.random() * tweetStrings.length);
           let status = {
             in_reply_to_status_id: data.statuses[i].id_str,
             status: tweetStrings[randomTweet]
-          }
+          };
           Twitter.post('statuses/update', status, function(err, data, response) {
             if (err) {
               console.log(err);
@@ -78,5 +84,5 @@ cron.schedule('* * * * *', function(){
     } else {
       console.log(err);
     }
-  })
+  });
 });
