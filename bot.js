@@ -5,10 +5,10 @@ var Twitter = new twit(config);
 
 var cron = require('node-cron');
 
-cron.schedule('* * * * *', function(){
+cron.schedule('*/2 * * * *', function(){
   var params = {
     q: 'a OR b OR c OR d OR e OR f OR g OR h OR i OR j OR k OR l OR m OR n OR o OR p OR q OR r OR s OR t OR u OR v OR y OR x OR z -filter:retweets',
-    count: 100,
+    count: 1,
     result_type: 'recent',
     lang: 'en',
     tweet_mode: 'extended'
