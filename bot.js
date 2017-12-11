@@ -21,6 +21,7 @@ cron.schedule('* * * * *', function(){
         console.log(data.statuses[i].user.screen_name);
         console.log(data.statuses[i].full_text);
         console.log('Character Count: ' + data.statuses[i].full_text.length);
+        // console.log('Favorite Count: ' + data.statuses[i].favorite_count);
         let tweetLength = data.statuses[i].full_text.length;
         let replyCheck = data.statuses[i].in_reply_to_status_id_str;
         let followerCount = data.statuses[i].user.followers_count;
@@ -50,7 +51,7 @@ cron.schedule('* * * * *', function(){
             'TL;DR ' + '@' + screenName + ', but I do love you friend.',
             'TL;DR! I love you ' + '@' + screenName + ', but this is too much for Twitter.',
             'I love ' + '@' + screenName + ', you love me, but please keep it to just one-forty.',
-            'You\'re loved and respected ' + '@' + screenName + ', but TL;DR.',
+            // 'You\'re loved and respected ' + '@' + screenName + ', but TL;DR.',
             'You\'re a treasure ' + '@' + screenName + ', but TL;DR.',
             'Strong tweet my friend ' + '@' + screenName + ', but TL;DR.',
             'As Nietzsche once said ' + '@' + screenName + ', it is my ambition to say in 140 what others say in a whole 280.',
